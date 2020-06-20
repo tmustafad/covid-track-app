@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Covid Tracker Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+<h1>Covid Tracker Application</h1>
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalConfirmedCases}"></h1>
+    <p class="lead">Total Confirmed Cases Worldwide</p>
+    <hr class="my-4">
+    <p>
+        <span>Total New Cases worldwide since yesterday : </span>
+        <span th:text="${totalNewCases}"></span>
+
+    </p>
+
+</div>
+
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+<br>
+<table class="table table-bordered table-striped">
+    <tr>
+        <!--<th>PROVINCE</th>-->
+        <th>COUNTRY</th>
+        <th>TOTAL NUMBER OF CONFIRMED CASES</th>
+        <th>LAST DAY RESULTS  </th>
+    </tr>
+    <tbody id="myTable">
+    <tr th:each="location : ${locations}">
+        <!--<td th:text="${location.province}"></td>-->
+        <td th:text="${location.country}"></td>
+        <td th:text="${location.totalConfirmedCases}">0</td>
+        <td th:text="${location.delta}">0</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+</body>
+
+</html>
