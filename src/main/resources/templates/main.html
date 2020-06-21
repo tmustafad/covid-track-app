@@ -14,14 +14,38 @@
 <div class="container">
 <h1>Covid Tracker Application</h1>
 <div class="jumbotron">
-    <h1 class="display-4" th:text="${totalConfirmedCases}"></h1>
-    <p class="lead">Total Confirmed Cases Worldwide</p>
-    <hr class="my-4">
     <p>
-        <span>Total New Cases worldwide since yesterday : </span>
+    <span>Total Confirmed Cases Worldwide so far :</span>
+    <span  th:text="${totalConfirmedCases}"></span>
+    </p>
+    <p>
+        <span>Total New Cases worldwide as of yesterday : </span>
         <span th:text="${totalNewCases}"></span>
 
     </p>
+
+    <p>
+        <span>Total New Deaths worldwide as of yesterday : </span>
+        <span th:text="${newDeaths}"></span>
+
+    </p>
+
+    <p>
+        <span>Total Number of Deaths so far : </span>
+        <span th:text="${totalDeaths}"></span>
+
+    </p>
+    <p>
+        <span>Number of Recovered people  as of yesterday : </span>
+        <span th:text="${newRecovered}"></span>
+
+    </p>
+    <p>
+        <span>Total Number of Recovered people so far : </span>
+        <span th:text="${totalRecovered}"></span>
+
+    </p>
+
 
 </div>
 
@@ -31,8 +55,13 @@
     <tr>
         <!--<th>PROVINCE</th>-->
         <th>COUNTRY</th>
-        <th>TOTAL NUMBER OF CONFIRMED CASES</th>
-        <th>LAST DAY RESULTS  </th>
+        <th>TOTAL CONFIRMED CASES SO FAR</th>
+        <th>NEW CASES AS OF YESTERDAY</th>
+        <th>TOTAL DEATHS SO FAR  </th>
+        <th>NEW DEATHS AS OF YESTERDAY</th>
+        <th>TOTAL RECOVERED PEOPLE SO FAR</th>
+        <th>NEW RECOVERED PEOPLE AS OF YESTERDAY</th>
+
     </tr>
     <tbody id="myTable">
     <tr th:each="summary : ${summaries}">
@@ -40,6 +69,11 @@
         <td th:text="${summary.country}"></td>
         <td th:text="${summary.totalConfirmed}">0</td>
         <td th:text="${summary.newConfirmed}">0</td>
+        <td th:text="${summary.totalDeaths}">0</td>
+        <td th:text="${summary.newDeaths}">0</td>
+        <td th:text="${summary.totalRecovered}">0</td>
+        <td th:text="${summary.newRecovered}">0</td>
+
     </tr>
     </tbody>
 </table>
