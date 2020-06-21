@@ -13,41 +13,67 @@
 <body>
 <div class="container">
 <h1>Covid Tracker Application</h1>
-<div class="jumbotron">
-    <p>
-    <span>Total Confirmed Cases Worldwide so far :</span>
-    <span  th:text="${totalConfirmedCases}"></span>
-    </p>
-    <p>
-        <span>Total New Cases worldwide as of yesterday : </span>
-        <span th:text="${totalNewCases}"></span>
+    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#globalData" aria-expanded="false" aria-controls="collapseExample">
+        Global Data and Statistics
+    </button>
 
-    </p>
+    <div class="modal" tabindex="-1" role="dialog" id="globalData">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Global Data and Statistics</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="jumbotron">
+                        <p>
+                            <span>Total Confirmed Cases Worldwide so far :</span>
+                            <span  th:text="${totalConfirmedCases}"></span>
+                        </p>
+                        <p>
+                            <span>Total New Cases worldwide as of yesterday : </span>
+                            <span th:text="${totalNewCases}"></span>
 
-    <p>
-        <span>Total New Deaths worldwide as of yesterday : </span>
-        <span th:text="${newDeaths}"></span>
+                        </p>
 
-    </p>
+                        <p>
+                            <span>Total New Deaths worldwide as of yesterday : </span>
+                            <span th:text="${newDeaths}"></span>
 
-    <p>
-        <span>Total Number of Deaths so far : </span>
-        <span th:text="${totalDeaths}"></span>
+                        </p>
 
-    </p>
-    <p>
-        <span>Number of Recovered people  as of yesterday : </span>
-        <span th:text="${newRecovered}"></span>
+                        <p>
+                            <span>Total Number of Deaths so far : </span>
+                            <span th:text="${totalDeaths}"></span>
 
-    </p>
-    <p>
-        <span>Total Number of Recovered people so far : </span>
-        <span th:text="${totalRecovered}"></span>
+                        </p>
+                        <p>
+                            <span>Number of Recovered people  as of yesterday : </span>
+                            <span th:text="${newRecovered}"></span>
 
-    </p>
+                        </p>
+                        <p>
+                            <span>Total Number of Recovered people so far : </span>
+                            <span th:text="${totalRecovered}"></span>
+
+                        </p>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-</div>
+
+
+
+
 
     <input class="form-control" id="myInput" type="text" placeholder="Search..">
 <br>
