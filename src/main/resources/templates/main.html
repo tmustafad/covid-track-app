@@ -35,11 +35,11 @@
         <th>LAST DAY RESULTS  </th>
     </tr>
     <tbody id="myTable">
-    <tr th:each="location : ${locations}">
-        <!--<td th:text="${location.province}"></td>-->
-        <td th:text="${location.country}"></td>
-        <td th:text="${location.totalConfirmedCases}">0</td>
-        <td th:text="${location.delta}">0</td>
+    <tr th:each="summary : ${summaries}">
+        <!--<td th:textsummarytion.province}"></td>-->
+        <td th:text="${summary.country}"></td>
+        <td th:text="${summary.totalConfirmed}">0</td>
+        <td th:text="${summary.newConfirmed}">0</td>
     </tr>
     </tbody>
 </table>

@@ -1,6 +1,6 @@
 package com.turkmen.covidtrack.controller;
 
-import com.turkmen.covidtrack.model.Location;
+import com.turkmen.covidtrack.model.Country;
 import com.turkmen.covidtrack.service.CovidDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +21,18 @@ public class Main {
 
     @GetMapping("/")
     public String main(Model model){
-        List<Location> locations=covidDataService.getLocations();
-        int totalConfirmedCases=locations.stream().mapToInt(i->i.getTotalConfirmedCases()).sum();
-        int totalNewCases=locations.stream().mapToInt(i->i.getDelta()).sum();
-        model.addAttribute("locations",locations);
+        List<Country> summaries =covidDataService.getCovidSummary().getCountries();
+        int totalConfirmedCases= covidDataService.getCovidSummary().getGlobal().getTotalConfirmed();
+        int totalNewCases= covidDataService.getCovidSummary().getGlobal().getNewConfirmed();
+        model.addAttribute("summaries", summaries);
         model.addAttribute("totalConfirmedCases",totalConfirmedCases);
         model.addAttribute("totalNewCases",totalNewCases);
         return "main";
     }
+
+
+
+
+
 
 }
