@@ -8,14 +8,44 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
+
 <div class="container">
-<h1>Covid Tracker Application</h1>
-    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#globalData" aria-expanded="false" aria-controls="collapseExample">
-        Global Data and Statistics
-    </button>
+
+
+
+    <!--<div class="card mb-3">-->
+        <!--<div class="card-body">-->
+            <!--<h2 class="card-title" align="center">Covid Tracker Application</h2>-->
+
+            <!--<button  class="btn btn-primary" type="button" data-toggle="modal" data-target="#globalData" aria-expanded="false" aria-controls="collapseExample">-->
+                <!--Global Data and Statistics-->
+            <!--</button>-->
+
+        <!--</div>-->
+
+    <!--</div>-->
+    <nav class="navbar navbar-light bg-light ">
+<h1>Covid Tracker</h1>
+        <form class="form-inline">
+
+            <button  class="btn btn-primary" type="button" data-toggle="modal" data-target="#globalData" aria-expanded="false" aria-controls="collapseExample">
+                Open Global Data and Statistics
+            </button>
+        </form>
+    </nav>
+
+
+
+
+
+
+
+
+
 
     <div class="modal" tabindex="-1" role="dialog" id="globalData">
         <div class="modal-dialog" role="document">
@@ -74,10 +104,11 @@
 
 
 
-
-    <input class="form-control" id="myInput" type="text" placeholder="Search..">
-<br>
-<table class="table table-bordered table-striped">
+    <!--<input class="form-control" id="myInput" type="text" placeholder="Search for Countries">-->
+<table class="table table-bordered table-striped table-dark">
+    <thead>
+    <tr>            <input id="myInput" class="form-control form-control-lg" type="search" placeholder="Search for a Country" aria-label="Search for a Country">
+    </tr>
     <tr>
         <!--<th>PROVINCE</th>-->
         <th>COUNTRY</th>
@@ -89,6 +120,7 @@
         <th>NEW RECOVERED PEOPLE AS OF YESTERDAY</th>
 
     </tr>
+    </thead>
     <tbody id="myTable">
     <tr th:each="summary : ${summaries}">
         <!--<td th:textsummarytion.province}"></td>-->
