@@ -2,7 +2,7 @@
 
 ## The tech stack
 
-(springboot.jpeg)  (heroku.png)  (theymeleaf.png)
+![](springboot.jpeg)  ![](heroku.png)  ![](theymeleaf.png)
 
 This is an example Java application that uses Spring Boot 2, Maven and Docker.
 
