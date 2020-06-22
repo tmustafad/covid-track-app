@@ -2,7 +2,7 @@
 
 ## The tech stack
 
-![Docker plus Spring Boot plus Codefresh](springboot.jpeg)
+(springboot.jpeg)
 
 This is an example Java application that uses Spring Boot 2, Maven and Docker.
 
