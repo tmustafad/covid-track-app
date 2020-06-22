@@ -1,5 +1,7 @@
 # Covid Tracker Application
 
+![](herokuApp.png)
+
 ## The tech stack
 
 ![](springboot.jpeg)  ![](heroku.png)  ![](theymeleaf.png)
