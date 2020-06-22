@@ -4,8 +4,16 @@
 
 ![](springboot.jpeg)  ![](heroku.png)  ![](theymeleaf.png)
 
-This is an example Java application that uses Spring Boot 2, Maven and Docker.
+This is a single SpringBoot module which is built by maven  and fetch the global covid data from the api which is provided by  Johns Hopkins CSSE.
 
+The fetch operation is achieved by Spring RestTemplate, a scheduled cron job is run on every night at 1 AM and gather the data.This Data is kept on Repository level in a singelton bean and UI is populated accordingly.
+
+Theymeleaf template engine together with Bootstrap and Jquery is used on UI side.
+
+## Third Party Covid Data API
+https://covid19api.com/#
+
+https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest
 
 
 
@@ -22,8 +30,9 @@ mvn package
 ```
 mvn spring-boot:run
 ```
+## Url to access the app on localhost
 
-....and navigate your browser to  http://localhost:9000/
+ http://localhost:9000/
 
 ## To run integration tests
 
@@ -32,39 +41,42 @@ mvn spring-boot:run
 mvn verify
 ```
 
-## To create a docker image packaging an existing jar
+## To build and deploy the application to Heroku 
+
+To make the application ready for deployment we need to use heroku maven plugin and the corresponding application with the same exact name should be created on heroku.
+
+Below is the plugin declaration in pom.xml
 
 ```
-mvn package
-docker build -t my-spring-boot-sample . -f Dockerfile.only-package
+           <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <configuration>
+                    <appName>covid-track-turkmen</appName>
+
+                    <processTypes>
+                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/*
+                            com.turkmen.covidtrack.CovidTrackApplication
+                        </web>
+                    </processTypes>
+                </configuration>
+            </plugin>
 ```
 
-## Create a multi-stage docker image
+Below is the command to deploy the ready-to-go app to heroku
+```
+mvn clean heroku:deploy
 
-To compile and package using Docker multi-stage builds
-
-```bash
-docker build . -t my-spring-boot-sample
 ```
 
 
-## To run the docker image
 
-```
-docker run -p 8080:8080 my-spring-boot-sample
-```
-
-The Dockerfile also has a healthcheck
-
-## To use this project in Codefresh 
+## Heroku Url which is accessible on web
 
 
-There is also a [codefresh.yml](codefresh.yml) for easy usage with the [Codefresh](codefresh.io) CI/CD platform.
-
-For the simple packaging pipeline see [codefresh-package-only.yml](codefresh-package-only.yml)
+https://covid-track-turkmen.herokuapp.com/
 
 
-More details can be found in [Codefresh documentation](https://codefresh.io/docs/docs/learn-by-example/java/spring-boot-2/)
 
 
-Enjoy!
+
