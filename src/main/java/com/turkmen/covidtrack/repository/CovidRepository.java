@@ -43,7 +43,7 @@ public class CovidRepository {
     public void getCovidInfo() throws IOException {
         logger.info("IN GET COVID INFO METHOD.......");
 
-        List<Country> newSummaries = new ArrayList();//in order to allow concurrent calls work smoothly every time a new list is created then the main list populated
+//        List<Country> newSummaries = new ArrayList();//in order to allow concurrent calls work smoothly every time a new list is created then the main list populated
 
 
         RestTemplate restTemplate = new RestTemplate();
